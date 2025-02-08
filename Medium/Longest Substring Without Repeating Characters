@@ -1,0 +1,28 @@
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        if (s == "") {
+            return 0;
+        }
+        unordered_set<int> visited;
+        int i = 0, j = 1;
+        visited.insert(s[i]);
+        int res = 1;
+        while (j != s.size()) {
+            if (visited.find(s[j]) == visited.end()) {
+                visited.insert(s[j]);
+                res = max(res,j - i + 1);
+                j++;
+            }
+            else {
+                visited.erase(s[i]);
+                i++;
+            }
+        }
+
+        if(res == 0){
+            return s.size();
+        }
+        return res;
+    }
+};
