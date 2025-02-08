@@ -1,0 +1,18 @@
+typedef long long ll;
+class Solution {
+public:
+    int mySqrt(int x) {
+        int first=0, last=x, ans = 0;
+        while(first <= last){
+            ll mid = first+(last-first)/2;
+            ll product = mid*mid;
+            if(product == x) return mid;
+            if(product < x){
+                ans = mid;
+                first = mid+1;
+            }
+            else last = mid-1;
+        }
+    return ans;
+    }
+};
